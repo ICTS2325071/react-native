@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.its-itc"
+      "bundleIdentifier": "com.example.reactnative"
 
     },
     "android": {

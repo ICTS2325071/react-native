@@ -1,4 +1,3 @@
-// src/components/ProductDetail.tsx
 import React from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
 import { Product } from '../services/api';

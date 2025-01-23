@@ -1,7 +1,6 @@
-// src/App.tsx
 import React from 'react';
-import AppNavigator from './navigation/app.navigator';
-import { FavoritesProvider } from './context/favorites.context';
+import { FavoritesProvider } from './src/context/favorites.context';
+import AppNavigator from './src/navigation/app.navigator';
 
 const App: React.FC = () => (
   <FavoritesProvider>

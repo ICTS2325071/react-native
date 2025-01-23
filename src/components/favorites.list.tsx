@@ -1,4 +1,3 @@
-// src/components/FavoritesList.tsx
 import React from 'react';
 import { View, FlatList, Text, Image, Button, StyleSheet } from 'react-native';
 import { Product } from '../services/api';

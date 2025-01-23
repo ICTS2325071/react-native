@@ -1,4 +1,3 @@
-// src/screens/ProductDetailScreen.tsx
 import React, { useEffect, useState, useContext } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import ProductDetail from '../components/product.detail';

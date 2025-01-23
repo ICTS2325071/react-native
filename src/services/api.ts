@@ -1,4 +1,3 @@
-// src/services/api.ts
 const BASE_URL = 'https://fakestoreapi.com';
 
 export interface Product {

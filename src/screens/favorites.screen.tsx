@@ -1,10 +1,9 @@
-// src/screens/FavoritesScreen.tsx
 import React, { useContext } from 'react';
 import { View, FlatList, Text, Button, StyleSheet } from 'react-native';
 import { FavoritesContext } from '../context/favorites.context';
 
 const FavoritesScreen: React.FC = () => {
-  const { favorites, removeFavorite } = useContext(FavoritesContext) ?? {}; // Accesso al contesto dei preferiti
+  const { favorites, removeFavorite } = useContext(FavoritesContext) ?? {};
 
   return (
     <View style={styles.container}>
@@ -18,7 +17,7 @@ const FavoritesScreen: React.FC = () => {
               <Text style={styles.price}>{item.price} €</Text>
               <Button
                 title="Rimuovi dai Preferiti"
-                onPress={() => removeFavorite && removeFavorite(item.id)} // Rimuove dai preferiti
+                onPress={() => removeFavorite && removeFavorite(item.id)}
               />
             </View>
           )}

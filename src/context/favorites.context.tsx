@@ -17,7 +17,6 @@ interface FavoritesProviderProps {
 export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }) => {
   const [favorites, setFavorites] = useState<Product[]>([]);
 
-  // Funzione per caricare i preferiti da AsyncStorage
   const loadFavorites = async () => {
     try {
       const savedFavorites = await AsyncStorage.getItem('favorites');
@@ -29,7 +28,6 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
     }
   };
 
-  // Funzione per salvare i preferiti su AsyncStorage
   const saveFavorites = async (newFavorites: Product[]) => {
     try {
       await AsyncStorage.setItem('favorites', JSON.stringify(newFavorites));
@@ -38,23 +36,20 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
     }
   };
 
-  // Aggiunge un prodotto ai preferiti
   const addFavorite = (product: Product) => {
     if (!favorites.find((item) => item.id === product.id)) {
       const updatedFavorites = [...favorites, product];
       setFavorites(updatedFavorites);
-      saveFavorites(updatedFavorites); // Salva i preferiti aggiornati
+      saveFavorites(updatedFavorites);
     }
   };
 
-  // Rimuove un prodotto dai preferiti
   const removeFavorite = (id: number) => {
     const updatedFavorites = favorites.filter((item) => item.id !== id);
     setFavorites(updatedFavorites);
-    saveFavorites(updatedFavorites); // Salva i preferiti aggiornati
+    saveFavorites(updatedFavorites);
   };
 
-  // Carica i preferiti all'avvio
   useEffect(() => {
     loadFavorites();
   }, []);

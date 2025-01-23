@@ -1,4 +1,3 @@
-// src/navigation/AppNavigator.tsx
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,6 +6,7 @@ import FavoritesScreen from '../screens/favorites.screen';
 
 export type RootStackParamList = {
   Home: undefined;
+  ProductDetail: { id: number };
   Favorites: undefined;
 };
 
