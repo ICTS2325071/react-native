@@ -8,7 +8,7 @@ import ProductDetailScreen from '../screens/product.detail.screen';
 
 export type RootTabParamList = {
   HomeStack: undefined;
-  Favorites: undefined;
+  FavoritesStack: undefined;
 };
 
 export type HomeStackParamList = {
@@ -16,8 +16,14 @@ export type HomeStackParamList = {
   ProductDetail: { id: number };
 };
 
+export type FavoritesStackParamList = {
+  Favorites: undefined;
+  ProductDetail: { id: number };
+};
+
 const Tab = createBottomTabNavigator<RootTabParamList>();
 const HomeStack = createStackNavigator<HomeStackParamList>();
+const FavoritesStack = createStackNavigator<FavoritesStackParamList>();
 
 const HomeStackNavigator = () => (
   <HomeStack.Navigator>
@@ -34,6 +40,21 @@ const HomeStackNavigator = () => (
   </HomeStack.Navigator>
 );
 
+const FavoritesStackNavigator = () => (
+  <FavoritesStack.Navigator>
+    <FavoritesStack.Screen 
+      name="Favorites" 
+      component={FavoritesScreen} 
+      options={{ title: 'Preferiti' }} 
+    />
+    <FavoritesStack.Screen 
+      name="ProductDetail" 
+      component={ProductDetailScreen} 
+      options={{ title: 'Dettaglio Prodotto' }} 
+    />
+  </FavoritesStack.Navigator>
+);
+
 const AppNavigator: React.FC = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
@@ -42,7 +63,7 @@ const AppNavigator: React.FC = () => (
         let iconName: string = '';
         if (route.name === 'HomeStack') {
           iconName = focused ? 'home' : 'home-outline';
-        } else if (route.name === 'Favorites') {
+        } else if (route.name === 'FavoritesStack') {
           iconName = focused ? 'heart' : 'heart-outline';
         }
         return <Ionicons name={iconName as any} size={size} color={color} />;
@@ -57,8 +78,8 @@ const AppNavigator: React.FC = () => (
       options={{ title: 'Prodotti' }} 
     />
     <Tab.Screen 
-      name="Favorites" 
-      component={FavoritesScreen} 
+      name="FavoritesStack" 
+      component={FavoritesStackNavigator} 
       options={{ title: 'Preferiti' }} 
     />
   </Tab.Navigator>

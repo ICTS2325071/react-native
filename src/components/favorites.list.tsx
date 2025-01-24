@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, FlatList, Text, Image, Button, StyleSheet } from 'react-native';
+import { View, FlatList, Text, Image, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { Product } from '../services/api';
 
 interface FavoritesListProps {
   favorites: Product[];
   onRemoveFavorite: (id: number) => void;
+  onProductPress: (id: number) => void; // Aggiunta la prop per navigare alla pagina di dettaglio
 }
 
-const FavoritesList: React.FC<FavoritesListProps> = ({ favorites, onRemoveFavorite }) => {
+const FavoritesList: React.FC<FavoritesListProps> = ({ favorites, onRemoveFavorite, onProductPress }) => {
   if (favorites.length === 0) {
     return (
       <View style={styles.emptyContainer}>
@@ -21,14 +22,16 @@ const FavoritesList: React.FC<FavoritesListProps> = ({ favorites, onRemoveFavori
       data={favorites}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
-        <View style={styles.itemContainer}>
-          <Image source={{ uri: item.image }} style={styles.image} />
-          <View style={styles.details}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.price}>{item.price} €</Text>
-            <Button title="Rimuovi dai Preferiti" onPress={() => onRemoveFavorite(item.id)} />
+        <TouchableOpacity onPress={() => onProductPress(item.id)}> {/* Aggiunto TouchableOpacity */}
+          <View style={styles.itemContainer}>
+            <Image source={{ uri: item.image }} style={styles.image} />
+            <View style={styles.details}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.price}>{item.price} €</Text>
+              <Button title="Rimuovi dai Preferiti" onPress={() => onRemoveFavorite(item.id)} />
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
       )}
     />
   );
