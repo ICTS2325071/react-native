@@ -23,11 +23,11 @@ const FavoritesList: React.FC<FavoritesListProps> = ({ favorites, onRemoveFavori
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
         <TouchableOpacity onPress={() => onProductPress(item.id)}> {/* Aggiunto TouchableOpacity */}
-          <View style={styles.itemContainer}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <View style={styles.details}>
-              <Text style={styles.title}>{item.title}</Text>
-              <Text style={styles.price}>{item.price} €</Text>
+          <View style={styles.listContainer}>
+            <Image source={{ uri: item.image }} style={styles.productImage} />
+            <View style={styles.productDetails}>
+              <Text style={styles.productTitle}>{item.title}</Text>
+              <Text style={styles.productPrice}>{item.price} €</Text>
               <Button title="Rimuovi dai Preferiti" onPress={() => onRemoveFavorite(item.id)} />
             </View>
           </View>
@@ -48,32 +48,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'gray',
   },
-  itemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
+  listContainer: {
     padding: 10,
-    backgroundColor: '#f9f9f9',
-    borderRadius: 8,
-    elevation: 1,
   },
-  image: {
-    width: 60,
-    height: 60,
-    borderRadius: 8,
+  productImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
     marginRight: 10,
   },
-  details: {
+  productDetails: {
     flex: 1,
+    justifyContent: 'space-between',
   },
-  title: {
+  productTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  price: {
-    fontSize: 14,
-    color: 'gray',
     marginBottom: 5,
+  },
+  productPrice: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#00a135',
   },
 });
 

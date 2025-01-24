@@ -58,7 +58,7 @@ const FavoritesScreen: React.FC<FavoritesScreenProps> = ({ navigation }) => {
   );
 
   return (
-    <View style={styles.container}>
+    <View style={styles.listContainer}>
       {favorites && favorites.length > 0 ? (
         <FlatList
           data={favorites}
@@ -76,10 +76,6 @@ const FavoritesScreen: React.FC<FavoritesScreenProps> = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    backgroundColor: '#f9f9f9',
-  },
   listContainer: {
     padding: 10,
   },
@@ -87,6 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 20,
   },
   emptyText: {
     fontSize: 16,
@@ -94,15 +91,12 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     flexDirection: 'row',
-    backgroundColor: 'white',
+    alignItems: 'center',
     marginBottom: 10,
-    borderRadius: 10,
     padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 8,
+    elevation: 1,
   },
   productImage: {
     width: 100,
@@ -148,7 +142,7 @@ const styles = StyleSheet.create({
   productPrice: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#007bff',
+    color: '#00a135',
   },
   removeButton: {
     backgroundColor: '#ff4d4d',

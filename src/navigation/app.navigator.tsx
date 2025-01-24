@@ -68,8 +68,8 @@ const AppNavigator: React.FC = () => (
         }
         return <Ionicons name={iconName as any} size={size} color={color} />;
       },
-      tabBarActiveTintColor: 'tomato',
-      tabBarInactiveTintColor: 'gray',
+      tabBarActiveTintColor: '#FFD700',
+      tabBarInactiveTintColor: 'black',
     })}
   >
     <Tab.Screen 
