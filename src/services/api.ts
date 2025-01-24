@@ -1,5 +1,12 @@
 const BASE_URL = 'https://fakestoreapi.com';
 
+export interface Review {
+  userId: number;
+  rating: number;
+  comment: string;
+  date: string;
+}
+
 export interface Product {
   id: number;
   title: string;
@@ -11,6 +18,7 @@ export interface Product {
     rate: number;
     count: number;
   };
+  reviews?: Review[];
 }
 
 export const fetchProducts = async (): Promise<Product[]> => {
