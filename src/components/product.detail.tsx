@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   price: { 
     fontSize: 20, 
     fontWeight: 'bold', 
-    color: '#007bff',
+    color: '#00a135',
     marginBottom: 15,
   },
   reviewsSection: {
