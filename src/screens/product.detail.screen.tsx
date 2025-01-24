@@ -1,24 +1,23 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { View, ActivityIndicator } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import ProductDetail from '../components/product.detail';
 import { fetchProductDetails, Product } from '../services/api';
-import { RouteProp, useRoute } from '@react-navigation/native';
-import { RootStackParamList } from '../navigation/app.navigator';
+import { HomeStackParamList } from '../navigation/app.navigator';
 import { FavoritesContext } from '../context/favorites.context';
 
-type ProductDetailScreenRouteProp = RouteProp<RootStackParamList, 'ProductDetail'>;
+type ProductDetailScreenProps = StackScreenProps<HomeStackParamList, 'ProductDetail'>;
 
-const ProductDetailScreen: React.FC = () => {
+const ProductDetailScreen: React.FC<ProductDetailScreenProps> = ({ route }) => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-  const { params } = useRoute<ProductDetailScreenRouteProp>();
   const { addFavorite } = useContext(FavoritesContext) ?? {};
 
   useEffect(() => {
-    fetchProductDetails(params.id)
+    fetchProductDetails(route.params.id)
       .then(setProduct)
       .finally(() => setLoading(false));
-  }, [params.id]);
+  }, [route.params.id]);
 
   if (loading) {
     return <ActivityIndicator size="large" color="#0000ff" />;

@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
 import { View, FlatList, Text, Button, StyleSheet } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import { FavoritesContext } from '../context/favorites.context';
+import { RootTabParamList } from '../navigation/app.navigator';
 
-const FavoritesScreen: React.FC = () => {
+type FavoritesScreenProps = StackScreenProps<RootTabParamList, 'Favorites'>;
+
+const FavoritesScreen: React.FC<FavoritesScreenProps> = ({ navigation }) => {
   const { favorites, removeFavorite } = useContext(FavoritesContext) ?? {};
 
   return (
@@ -28,6 +32,8 @@ const FavoritesScreen: React.FC = () => {
     </View>
   );
 };
+
+// ... rest of the code remains the same
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 10, backgroundColor: '#ffffff' },
